@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { FaGithub, FaPlus, FaSpinner, FaBars, FaTrash } from "react-icons/fa";
 import {
   Container,
@@ -13,15 +13,41 @@ const Main = () => {
   const [newRepo, setNewRepo] = useState("");
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(false);
+
+  useEffect(() => {
+    const repositoriesStorage = localStorage.getItem("repositories");
+
+    if (repositoriesStorage) {
+      setRepositories(JSON.parse(repositoriesStorage));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("repositories", JSON.stringify(repositories));
+  }, [repositories]);
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
       async function submit() {
         setLoading(true);
+        setAlert(false);
 
         try {
+          if (newRepo === "") {
+            throw new Error("You must inform a repository");
+          }
+
           const response = await api.get(`repos/${newRepo}`);
+
+          const hasRepo = repositories.find(
+            (repository) => repository.name === newRepo
+          );
+
+          if (hasRepo) {
+            throw new Error("Repository already exists");
+          }
 
           const data = {
             name: response.data.full_name,
@@ -30,6 +56,7 @@ const Main = () => {
           setRepositories([...repositories, data]);
           setNewRepo("");
         } catch (error) {
+          setAlert(true);
           console.log(error);
         } finally {
           setLoading(false);
@@ -41,18 +68,21 @@ const Main = () => {
     [newRepo, repositories]
   );
 
-  function handleInputChange(e) {
-    setNewRepo(e.target.value);
-  }
-
   const handleDelete = useCallback(
     (repository) => {
       const find = repositories.filter((repo) => repo.name !== repository);
 
       setRepositories(find);
+
+      localStorage.setItem("repositories", JSON.stringify(find));
     },
     [repositories]
   );
+
+  function handleInputChange(e) {
+    setNewRepo(e.target.value);
+    setAlert(false);
+  }
 
   return (
     <Container>
@@ -61,7 +91,7 @@ const Main = () => {
         Meus Repositórios
       </h1>
 
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} error={alert ? 1 : 0}>
         <input
           type="text"
           placeholder="Adicionar repositório"
