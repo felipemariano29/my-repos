@@ -1,3 +1,13 @@
-export default function App() {
-  return <div>Hello world!</div>;
-}
+import React from "react";
+
+import Routes from "./routes";
+
+const App = () => {
+  return (
+    <>
+      <Routes />
+    </>
+  );
+};
+
+export default App;
