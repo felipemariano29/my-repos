@@ -1,12 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { FaGithub, FaPlus, FaSpinner, FaBars, FaTrash } from "react-icons/fa";
-import {
-  Container,
-  Form,
-  SubmitButton,
-  List,
-  DeleteButton,
-} from "../../styles";
+import { Container, Form, SubmitButton, List, DeleteButton } from "./styles";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 
 const Main = () => {
@@ -120,9 +115,9 @@ const Main = () => {
               {repository.name}
             </span>
 
-            <a href="">
+            <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
               <FaBars size={14} />
-            </a>
+            </Link>
           </li>
         ))}
       </List>
