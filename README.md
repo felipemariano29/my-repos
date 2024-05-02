@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# my-repos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é uma aplicação React para gerenciar repositórios do GitHub. Permite aos usuários adicionar repositórios, visualizar seus detalhes e ver problemas associados.
 
-## Available Scripts
+## Dependências
 
-In the project directory, you can run:
+Este projeto utiliza as seguintes dependências:
 
-### `npm start`
+- **React**: Uma biblioteca JavaScript para construir interfaces de usuário.
+- **React Router DOM**: Biblioteca de roteamento para React.
+- **Axios**: Cliente HTTP baseado em promises para fazer requisições para a API do GitHub.
+- **React Icons**: Biblioteca para adicionar ícones a aplicações React.
+- **Styled Components**: Biblioteca CSS-in-JS para estilizar componentes React.
+- **React Dotenv**: Permite carregar variáveis de ambiente de um arquivo `.env` para `process.env`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Estrutura de Arquivos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A estrutura do projeto está organizada da seguinte forma:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **`app.js`**: Componente principal da aplicação, renderiza estilos globais e rotas.
+- **`routes.js`**: Define as rotas da aplicação usando o React Router DOM.
+- **`api.js`**: Configura o Axios para fazer requisições HTTP para a API do GitHub.
+- **`main.js`**: Componente para gerenciar repositórios, adicionar novos repositórios e listar repositórios existentes.
+- **`repository.js`**: Componente para exibir detalhes do repositório, incluindo problemas associados ao repositório.
